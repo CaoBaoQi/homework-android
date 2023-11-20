@@ -2,12 +2,10 @@ package jz.cbq.work_note_book.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -15,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-
 import java.util.List;
 
 import jz.cbq.work_note_book.R;
@@ -25,20 +22,37 @@ import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.InAbeyance;
 
 /**
- * InAbeyanceFragment
+ * 待办事项
  *
  * @author cbq
  * @date 2023/11/20 22:52
  * @since 1.0.0
  */
 public class InAbeyanceFragment extends Fragment {
-
-    private View rootView; // 根视图
-    List<InAbeyance> inAbeyances; // 存放 InAbeyance 数据
-    EditText search_inAbeyance; // 搜索框
-    RecyclerView recyclerView; // RecyclerView控件
-    InAbeyanceRecyclerViewAdapter inAbeyanceRecyclerViewAdapter; // 适配器
-    ImageView add_inAbeyance; // 添加待办按钮
+    /**
+     * 根视图 rootView
+     */
+    private View rootView;
+    /**
+     * 待办事项 List
+     */
+    List<InAbeyance> inAbeyances;
+    /**
+     * 搜索框
+     */
+    EditText search_inAbeyance;
+    /**
+     * RecyclerView
+     */
+    RecyclerView recyclerView;
+    /**
+     * InAbeyanceRecyclerViewAdapter 适配器
+     */
+    InAbeyanceRecyclerViewAdapter inAbeyanceRecyclerViewAdapter;
+    /**
+     * 添加待办按钮
+     */
+    ImageView add_inAbeyance;
 
 
 
@@ -50,7 +64,6 @@ public class InAbeyanceFragment extends Fragment {
         return new InAbeyanceFragment();
     }
 
-    // 初始化
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,18 +87,18 @@ public class InAbeyanceFragment extends Fragment {
         return rootView;
     }
 
-    // 在返回到该Fragment时调用
     @Override
     public void onResume() {
         super.onResume();
         initView();
     }
 
-    // 初始化根视图的控件
+    /**
+     * 初始化根视图的控件
+     */
     private void initView() {
-        // 获取搜索框
         search_inAbeyance = rootView.findViewById(R.id.search_in_abeyance_editText);
-        // 为搜索框添加文本改变监听事件
+
         search_inAbeyance.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -93,7 +106,6 @@ public class InAbeyanceFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-            // 输入框内容改变后触发
             @Override
             public void afterTextChanged(Editable editable) {
                 String keyWord = search_inAbeyance.getText().toString();
@@ -101,62 +113,52 @@ public class InAbeyanceFragment extends Fragment {
                 bindData();
             }
         });
-        // 获取全部待办数据
+
         inAbeyances = getInAbeyancesData();
-        bindData(); // 绑定数据
-        // 获取添加按钮
+        bindData();
+
         add_inAbeyance = rootView.findViewById(R.id.add_in_abey_ance);
-        // 为添加按钮添加单击事件监听 --> 单击到达添加待办页面
-        add_inAbeyance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 创建意图
-                Intent intent = new Intent(getActivity(), InAbeyanceDialogActivity.class);
-                // 执行意图
-                startActivity(intent);
-            }
-        });
+        add_inAbeyance.setOnClickListener(view -> startActivity(new Intent(getActivity(), InAbeyanceDialogActivity.class)));
     }
 
-    // 绑定数据
+    /**
+     * 绑定数据
+     */
     private void bindData() {
-        // 获取RecyclerView
         recyclerView = rootView.findViewById(R.id.in_abeyance_recyclerview);
-        // 设置为线性布局
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        // 创建适配器
         inAbeyanceRecyclerViewAdapter = new InAbeyanceRecyclerViewAdapter(inAbeyances, getActivity());
-        // 为待办条目设置单击事件监听器
-        inAbeyanceRecyclerViewAdapter.setOnItemClickListener(new InAbeyanceRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void OnItemClick(int position, String _id, String content, String date_remind) {
-                // 创建 Bundle
-                Bundle bundle = new Bundle();
-                // 添加数据
-                bundle.putString("_id", _id);
-                bundle.putString("content", content);
-                bundle.putString("date_remind", date_remind);
-                // 创建意图
-                Intent intent = new Intent(getActivity(), InAbeyanceDialogActivity.class);
-                // 将 bundle 放入 intent
-                intent.putExtras(bundle);
-                startActivity(intent); // 执行意图
-            }
+
+        inAbeyanceRecyclerViewAdapter.setOnItemClickListener((position, _id, content, date_remind) -> {
+            Bundle bundle = new Bundle();
+
+            bundle.putString("_id", _id);
+            bundle.putString("content", content);
+            bundle.putString("date_remind", date_remind);
+            Intent intent = new Intent(getActivity(), InAbeyanceDialogActivity.class);
+
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
-        // 设置适配器
+
         recyclerView.setAdapter(inAbeyanceRecyclerViewAdapter);
     }
 
-    // 获取全部待办信息
+    /**
+     * 获取全部 InAbeyance 数据
+     * @return List<InAbeyance>
+     */
     public List<InAbeyance> getInAbeyancesData() {
-        // 在数据库中全部查询待办数据
         return NoteBookDBOperator.getInAbeyanceData(getActivity());
     }
 
-    // 根据关键字查询信息
+    /**
+     * 查询符合关键字的 inAbeyance 数据
+     * @param keyWord 关键字
+     * @return List<InAbeyance>
+     */
     public List<InAbeyance> queryInAbeyancesData(String keyWord) {
-        // 根据关键字在数据库中进行搜索待办
         return NoteBookDBOperator.queryInAbeyanceData(getActivity(), keyWord);
     }
 }

@@ -25,16 +25,20 @@ import jz.cbq.work_note_book.entity.Note;
 public class RecycledNoteRecyclerViewAdapter extends
         RecyclerView.Adapter<NoteRecyclerViewAdapter.MyRecyclerViewHolder> {
 
-    List<Note> notes; // 存放已被回收的笔记
-    Context context; // 上下文
+    /**
+     * 存放已被回收的笔记
+     */
+    List<Note> notes;
+    /**
+     * context
+     */
+    Context context;
 
-    // 构造器
     public RecycledNoteRecyclerViewAdapter(List<Note> notes, Context context) {
         this.notes = notes;
         this.context = context;
     }
 
-    // 创建 ViewHolder
     @NonNull
     @Override
     public NoteRecyclerViewAdapter.MyRecyclerViewHolder
@@ -47,9 +51,10 @@ public class RecycledNoteRecyclerViewAdapter extends
     public void onBindViewHolder(
             @NonNull NoteRecyclerViewAdapter.MyRecyclerViewHolder holder,
             @SuppressLint("RecyclerView") int position) {
-        // 获取标题内容
+
         String title = notes.get(position).getTitle();
         String content = notes.get(position).getContent();
+
         if (title.length() == 0) {
             holder.note_title.setVisibility(View.GONE);
         } else {
@@ -62,53 +67,49 @@ public class RecycledNoteRecyclerViewAdapter extends
             holder.note_content.setVisibility(View.VISIBLE);
             holder.note_content.setText(content);
         }
-        // 设置笔记更新日期
         holder.note_date.setText(notes.get(position).getDate_updated());
-        // 设置笔记条目单击事件监听 --> 点击将笔记还原
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restoreNote(position);
-            }
-        });
-        // 为笔记条目设置长按事件监听器 --> 长按删除
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                deleteNote(position);
-                return true;
-            }
+
+        holder.itemView.setOnClickListener(view -> restoreNote(position));
+
+        holder.itemView.setOnLongClickListener(view -> {
+            deleteNote(position);
+            return true;
         });
     }
 
-    // 获取笔记条数
     @Override
     public int getItemCount() {
         return notes.size();
     }
 
-    // 还原一条笔记
+    /**
+     * 还原一条笔记
+     * @param position position
+     */
     public void restoreNote(int position) {
-        // 获取要删除的笔记的_id
         int _id = notes.get(position).get_id();
-        // 从数据库中删除
+
         NoteBookDBOperator.changeNoteRecycleStatus(context, _id);
-        notifyItemRemoved(position); // 通知哪一条数据数据被回收
-        notes.remove(position); // 在条目中移除被回收的笔记
-        // 通知适配器受到影响的position的位置
+
+        notifyItemRemoved(position);
+        notes.remove(position);
+
         notifyItemRangeChanged(position, notes.size() - position);
         Toast.makeText(context, "恢复成功", Toast.LENGTH_SHORT).show();
     }
 
-    // 删除一条笔记
+    /**
+     * 删除一条笔记
+     * @param position position
+     */
     public void deleteNote(int position) {
-        // 获取要删除的笔记的_id
         int _id = notes.get(position).get_id();
-        // 从数据库中删除
+
         NoteBookDBOperator.deleteNote(context, _id);
-        notifyItemRemoved(position); // 通知哪一条数据数据被回收
-        notes.remove(position); // 在条目中移除被回收的笔记
-        // 通知适配器受到影响的position的位置
+
+        notifyItemRemoved(position);
+        notes.remove(position);
+
         notifyItemRangeChanged(position, notes.size() - position);
         Toast.makeText(context, "删除成功", Toast.LENGTH_SHORT).show();
     }

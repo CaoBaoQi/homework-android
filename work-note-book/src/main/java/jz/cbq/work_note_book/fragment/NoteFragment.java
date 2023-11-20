@@ -3,13 +3,11 @@ package jz.cbq.work_note_book.fragment;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -18,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import java.util.List;
 
 import jz.cbq.work_note_book.R;
@@ -28,21 +25,37 @@ import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.Note;
 
 /**
- * NoteFragment
+ * 笔记
  *
  * @author cbq
  * @date 2023/11/20 22:48
  * @since 1.0.0
  */
 public class NoteFragment extends Fragment {
-
-    private View rootView; // rootView 根视图
-    private List<Note> notes; // 笔记数据
-    EditText search_note; // 搜索框
-    RecyclerView recyclerView; // RecyclerView
-    NoteRecyclerViewAdapter myRecyclerViewAdapter; // RecyclerView适配器
-    public ImageView add_note; // 添加按钮
-
+    /**
+     * rootView
+     */
+    private View rootView;
+    /**
+     * 笔记 List
+     */
+    private List<Note> notes;
+    /**
+     * 搜索框
+     */
+    EditText search_note;
+    /**
+     * RecyclerView
+     */
+    RecyclerView recyclerView;
+    /**
+     * NoteRecyclerViewAdapter 适配器
+     */
+    NoteRecyclerViewAdapter myRecyclerViewAdapter;
+    /**
+     * 添加按钮
+     */
+    public ImageView add_note;
 
 
     /**
@@ -77,23 +90,19 @@ public class NoteFragment extends Fragment {
         return rootView;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onResume() {
         super.onResume();
-//        Log.e("xxx", "onResume: xxx" );
+
         initView();
     }
 
-    // 初始化该Fragment的控件
-    @RequiresApi(api = Build.VERSION_CODES.O)
+    /**
+     * 初始化该 Fragment 的控件
+     */
     private void initView() {
-//        Log.e("xxx", "NoteFragment--->initView: 走到这里");
-        // 获取搜索框控件
         search_note = rootView.findViewById(R.id.search_note_editText);
 
-
-        // 为搜索框添加事件监听,在搜索框的值改变时触发
         search_note.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -101,74 +110,59 @@ public class NoteFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
-            // 在内容改变后触发该方法
             @Override
             public void afterTextChanged(Editable editable) {
-                // 获取搜索框内容作为搜索关键字
                 String keyWord = search_note.getText().toString();
-                // 查询与关键字匹配的笔记
                 notes = queryNotesData(keyWord);
-                // 更新所绑定的数据
                 bindData();
             }
         });
 
-        // 获取全部Note数据
         notes = getNotesData();
-        bindData();// 将数据绑定到RecyclerView中
+        bindData();
 
-        // 获取添加按钮控件
         add_note = rootView.findViewById(R.id.add_note);
-        // 为添加按钮添加单击事件监听
-        add_note.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), EditActivity.class);
-                startActivity(intent);
-            }
-        });
+        add_note.setOnClickListener(view -> startActivity(new Intent(getActivity(), EditActivity.class)));
     }
 
-    // 将数据绑定到RecyclerView中
+    /**
+     * 将数据绑定到 RecyclerView 中
+     */
     public void bindData() {
-        // 获取RecyclerView
         recyclerView  = rootView.findViewById(R.id.note_recyclerview);
-        // 采用瀑布网格布局
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL);
-        // 设置布局管理器
         recyclerView.setLayoutManager(layoutManager);
-        // 新建适配器
         myRecyclerViewAdapter = new NoteRecyclerViewAdapter(notes, getActivity());
-        // 为适配器的每个条目设置单击事件监听
-        // 与 MyRecyclerViewAdapter 中的 OnItemClickListener 接口结合使用
-        myRecyclerViewAdapter.setOnItemClickListener(new NoteRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int position, String title, String content, String date_created, String note_id) {
-                Bundle bundle = new Bundle();// 新建一个 Bundle 来传递数据
-                bundle.putString("note_title", title); // 放入笔记标题
-                bundle.putString("note_content", content); // 放入笔记内容
-                bundle.putString("date_created", date_created); // 放入创建日期
-                bundle.putString("note_id", note_id); // 放入笔记 _id
-                // 创建意图,跳转到 EditActivity
-                Intent intent = new Intent(getActivity(), EditActivity.class);
-                intent.putExtras(bundle); // 将 Bundle 添加到 Intent 中
-                startActivity(intent); // 进行跳转
-            }
+        myRecyclerViewAdapter.setOnItemClickListener((position, title, content, date_created, note_id) -> {
+            Bundle bundle = new Bundle();
+
+            bundle.putString("note_title", title);
+            bundle.putString("note_content", content);
+            bundle.putString("date_created", date_created);
+            bundle.putString("note_id", note_id);
+
+            Intent intent = new Intent(getActivity(), EditActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
-        // 为RecyclerView设置适配器
+
         recyclerView.setAdapter(myRecyclerViewAdapter);
     }
 
-    // 通过这个方法来获取全部Note数据
+    /**
+     * 获取全部 Note 数据
+     * @return List<Note>
+     */
     public List<Note> getNotesData() {
-        // 查询全部Note数据并返回
         return NoteBookDBOperator.getNotesData(getActivity(), 0);
     }
 
-    // 通过这个方法来查询符合关键字的note数据
+    /**
+     * 查询符合关键字的 note 数据
+     * @param keyWord 关键字
+     * @return List<Note>
+     */
     public List<Note> queryNotesData(String keyWord) {
-        // 按照关键字查询Note并返回
         return NoteBookDBOperator.queryNotesData(getActivity(), keyWord, 0);
     }
 }

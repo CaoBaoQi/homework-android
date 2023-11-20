@@ -9,7 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-
+import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 import jz.cbq.work_note_book.MainActivity;
@@ -24,30 +24,32 @@ import jz.cbq.work_note_book.R;
  */
 public class AlarmReceiver extends BroadcastReceiver {
 
+    /**
+     * onReceive
+     *
+     * @param context The Context in which the receiver is running.
+     * @param intent  The Intent being received.
+     */
     @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
     public void onReceive(Context context, Intent intent) {
-        // 获取系统通知服务
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-        // 创建意图
-        Intent intent1 = new Intent(context, MainActivity.class);
-        // 创建点击通知后的跳转意图
+
         PendingIntent pendingIntent = PendingIntent.getActivity(
-                context, 0, intent1, PendingIntent.FLAG_IMMUTABLE);
-        // 创建通知
+                context, 0, new Intent(context, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
+
         Notification notification;
         Bundle bundle = intent.getExtras();
-        // 判断如果为安卓8.0以上设置频道id
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // 创建频道id
-            NotificationChannel notificationChannel = new NotificationChannel(
-                    "BaldMonkey", "待办提醒",
-                    NotificationManager.IMPORTANCE_HIGH); // 弹出并在通知栏显示
-            // 给通知管理器创建频道id
-            notificationManager.createNotificationChannel(notificationChannel);
-            // 实例化通知,channelId与上面设置的一致
-            notification = new Notification.Builder(context, "BaldMonkey")
+
+        NotificationChannel notificationChannel = new NotificationChannel(
+                "TODOAlarm", "待办提醒",
+                NotificationManager.IMPORTANCE_HIGH); // 弹出并在通知栏显示
+
+        notificationManager.createNotificationChannel(notificationChannel);
+
+        if (bundle != null) {
+            notification = new Notification.Builder(context, "TODOAlarm")
                     .setSmallIcon(R.drawable.ic_baseline_alarm_24)
                     .setTicker("待办提醒")
                     .setContentTitle("待办事项提醒")
@@ -55,8 +57,9 @@ public class AlarmReceiver extends BroadcastReceiver {
                     .setContentIntent(pendingIntent)
                     .setAutoCancel(true)
                     .build();
-            // 发送通知
             notificationManager.notify(3, notification);
+        } else {
+            Toast.makeText(context, "内部错误" + " |AlarmReceiver(onReceive)", Toast.LENGTH_SHORT).show();
         }
     }
 }

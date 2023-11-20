@@ -16,24 +16,23 @@ import java.util.List;
  * @since 1.0.0
  */
 public class MyFragmentPagerAdapter extends FragmentStateAdapter {
+    /**
+     * Fragment List
+     */
+    List<Fragment> fragmentList;
 
-    List<Fragment> fragmentList; // Fragment数组
-
-    // 初始化
     public MyFragmentPagerAdapter(@NonNull FragmentManager fragmentManager,
                                   @NonNull Lifecycle lifecycle,
                                   List<Fragment> fragmentList) {
         super(fragmentManager, lifecycle);
-        this.fragmentList = fragmentList; // 为Fragment数组赋值
+        this.fragmentList = fragmentList;
     }
-    // 根据 position 创建 Fragment
     @NonNull
     @Override
     public Fragment createFragment(int position) {
         return fragmentList.get(position);
     }
 
-    // 获取 Fragment 总数
     @Override
     public int getItemCount() {
         return fragmentList.size();

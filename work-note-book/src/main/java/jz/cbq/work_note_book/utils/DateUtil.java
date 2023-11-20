@@ -2,7 +2,6 @@ package jz.cbq.work_note_book.utils;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -48,8 +47,10 @@ public class DateUtil {
                 = new SimpleDateFormat("MM月dd日 aa HH:mm");
         try {
             Date date = dateFormat.parse(dateTime);
-            date.setYear(Calendar.getInstance().get(Calendar.YEAR) - 1900);
-            return date.getTime();
+            if (date != null){
+                date.setYear(Calendar.getInstance().get(Calendar.YEAR) - 1900);
+                return date.getTime();
+            }
         } catch (ParseException e) {
             Log.e("DateUtil->", "getTimeMillis: " + "捕获异常");
         }
