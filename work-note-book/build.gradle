@@ -28,6 +28,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -36,4 +38,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // 导入 viewpager2 支持
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+    // 导入 recyclerview 依赖包
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    // 添加时间选择器依赖
+    implementation 'com.contrarywind:Android-PickerView:3.2.6'
 }
