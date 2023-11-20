@@ -1,5 +1,6 @@
 .idea
 .fastRequest
+build
 *.iml
 .gradle
 /local.properties
