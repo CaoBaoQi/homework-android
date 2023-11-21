@@ -17,11 +17,11 @@
   <a href="https://github.com/CaoBaoQii/homework-android/pulls">Request Feature</a>
 </p>
 
-| 工具    | 版本       |
-|-------|----------|
-| IDEA  | 2023.2.+ |
-| JDK   | 17       |
-| Maven | 3.8.x    |
+| 工具     | 版本       |
+|--------|----------|
+| IDEA   | 2023.2.+ |
+| JDK    | 17       |
+| Gradle | 8.0      |
 
 1. Get overview at [Document | 文档](https://github.com/CaoBaoQii/homework-android/tree/master/)
 2. Clone the repo
