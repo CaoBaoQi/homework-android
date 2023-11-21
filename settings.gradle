@@ -19,3 +19,4 @@ rootProject.name = "homework-android"
 include ':app'
 include ':work-note-book'
 include ':work-buy-car-v1'
+include ':work-memo'
