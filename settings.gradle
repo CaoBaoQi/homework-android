@@ -18,7 +18,7 @@ dependencyResolutionManagement {
 rootProject.name = "homework-android"
 include ':app'
 include ':work-note-book'
-include ':work-buy-car-v1'
+include ':work-buy-car'
 include ':work-memo'
 include ':work-course-table'
 include ':account-book'

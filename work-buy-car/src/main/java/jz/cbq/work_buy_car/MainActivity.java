@@ -1,4 +1,4 @@
-package jz.cbq.work_buy_car_v1;
+package jz.cbq.work_buy_car;
 
 import androidx.appcompat.app.AppCompatActivity;
 

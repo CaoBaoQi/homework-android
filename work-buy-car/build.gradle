@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'jz.cbq.work_buy_car_v1'
+    namespace 'jz.cbq.work_buy_car'
     compileSdk 34
 
     defaultConfig {
-        applicationId "jz.cbq.work_buy_car_v1"
+        applicationId "jz.cbq.work_buy_car"
         minSdk 30
         targetSdk 34
         versionCode 1
