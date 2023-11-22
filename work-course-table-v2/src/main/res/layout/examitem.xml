@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="@color/colorAccent">
+
+    <!--考试卡片-->
+    <TextView
+        android:id="@+id/examcardname_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="examcardname"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_margin="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/examcardcontent_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:singleLine="true"
+        android:text="examcardcontent"
+        android:textColor="@android:color/background_light" />
+</LinearLayout>

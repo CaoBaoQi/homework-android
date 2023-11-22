@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">work-course-table-v2</string>
+    <string name="app_name">掌下理工大</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">武汉理工大学\nWuhan University of Technology</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="bug">ps:\n一定需要给日历权限哦！！！\n暂未解决：\n1.界面未优化。\n2.一学期跨越公历年周数会出错。\n3.修改设置后主页时间需要销毁后更新。\n4.暂时采用日程代替后台通知。\n5.课表界面需要显示第三方周课表。</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="home_second">Home Second</string>
 </resources>

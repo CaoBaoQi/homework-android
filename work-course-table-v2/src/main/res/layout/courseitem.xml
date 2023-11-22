@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@android:color/holo_green_light">
+
+    <!--课程卡片-->
+    <TextView
+        android:id="@+id/coursecardname_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="coursecardname"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:id="@+id/coursecardweek_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/coursecardname_textview"
+        android:text="coursecardweek"
+        android:textColor="@android:color/background_light"
+        android:layout_margin="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:id="@+id/coursecard_view"
+        android:layout_below="@id/coursecardname_textview"
+        android:background="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/coursecardtime_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:singleLine="true"
+        android:layout_below="@id/coursecard_view"
+        android:text="coursecardtime"
+        android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/coursecardcontent_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:singleLine="true"
+        android:layout_toRightOf="@id/coursecardtime_textview"
+        android:layout_below="@id/coursecard_view"
+        android:text="examcardcontent"
+        android:textColor="@android:color/background_light" />
+</RelativeLayout>
