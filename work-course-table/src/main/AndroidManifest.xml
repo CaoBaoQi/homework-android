@@ -56,7 +56,7 @@
                 android:name="com.google.android.gms.version"
                 android:value="@integer/google_play_services_version" />
         <provider
-                android:name="android.support.v4.content.FileProvider"
+                android:name="androidx.core.content.FileProvider"
                 android:authorities="com.example.write.fileprovider"
                 android:exported="false"
                 android:grantUriPermissions="true">

@@ -6,24 +6,16 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,19 +30,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import static jz.cbq.work_course_table.Login.getLocalBitmap;
-
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     //当前头像
     private de.hdodenhof.circleimageview.CircleImageView icon;
     // 头像Bitmap
     private Bitmap head;
-   // private static String path=Environment.getExternalStorageDirectory().getAbsolutePath()+"/kcb";
-   // sd路径
+    // private static String path=Environment.getExternalStorageDirectory().getAbsolutePath()+"/kcb";
+    // sd路径
     private static String path = "sdcard/myHead/";
     //滑动菜单
     private DrawerLayout mDrawerLayout;
@@ -187,73 +182,73 @@ public class MainActivity extends AppCompatActivity {
 
     //创建课程视图
     private void createCourseView(final Course course) {
-            final int[] course_bj = {R.drawable.coursetable1, R.drawable.coursetable2,
-                    R.drawable.coursetable3, R.drawable.coursetable4, R.drawable.coursetable5,
-                    R.drawable.coursetable6, R.drawable.coursetable7, R.drawable.coursetable8,
-                    R.drawable.coursetable9, R.drawable.coursetable10};
-            int height = 180;
-            int getDay = course.getDay();
-            if ((getDay < 1 || getDay > 7) || course.getStart() > course.getEnd() || course.getEnd() > 10) {
-                if (mToast == null) {
-                    mToast = Toast.makeText(this, "星期几输错,或课程节次输错，请重新输入", Toast.LENGTH_SHORT);
-                } else {
-                    mToast.setText("星期几输错,或课程节次输错，请重新输入");
-                    mToast.setDuration(Toast.LENGTH_SHORT);
-                }
-                mToast.show();
+        final int[] course_bj = {R.drawable.coursetable1, R.drawable.coursetable2,
+                R.drawable.coursetable3, R.drawable.coursetable4, R.drawable.coursetable5,
+                R.drawable.coursetable6, R.drawable.coursetable7, R.drawable.coursetable8,
+                R.drawable.coursetable9, R.drawable.coursetable10};
+        int height = 180;
+        int getDay = course.getDay();
+        if ((getDay < 1 || getDay > 7) || course.getStart() > course.getEnd() || course.getEnd() > 10) {
+            if (mToast == null) {
+                mToast = Toast.makeText(this, "星期几输错,或课程节次输错，请重新输入", Toast.LENGTH_SHORT);
             } else {
-                switch (getDay) {
-                    case 1:
-                        day = (RelativeLayout) findViewById(R.id.monday);
-                        break;
-                    case 2:
-                        day = (RelativeLayout) findViewById(R.id.tuesday);
-                        break;
-                    case 3:
-                        day = (RelativeLayout) findViewById(R.id.wednesday);
-                        break;
-                    case 4:
-                        day = (RelativeLayout) findViewById(R.id.thursday);
-                        break;
-                    case 5:
-                        day = (RelativeLayout) findViewById(R.id.friday);
-                        break;
-                    case 6:
-                        day = (RelativeLayout) findViewById(R.id.saturday);
-                        break;
-                    case 7:
-                        day = (RelativeLayout) findViewById(R.id.weekday);
-                        break;
-                }
-                final View v = LayoutInflater.from(this).inflate(R.layout.course_card, null); //加载单个课程布局
-                v.setY(height * (course.getStart() - 1)); //设置开始高度,即第几节课开始
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
-                        (ViewGroup.LayoutParams.MATCH_PARENT, (course.getEnd() - course.getStart() + 1) * height - 8); //设置布局高度,即跨多少节课
-                v.setLayoutParams(params);
-                TextView text = (TextView) v.findViewById(R.id.text_view);
-                text.setBackgroundResource(course_bj[(int) (Math.random() * 10)]);
-                text.setText(course.getCourseName() + "\n\n" + course.getClassRoom()); //显示课程名
-                day.addView(v);
-                //长按删除课程
-                v.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        v.setVisibility(View.GONE);//先隐藏
-                        day.removeView(v);//再移除课程视图
-                        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
-                        sqLiteDatabase.execSQL("delete from courses where course_name = ?", new String[]{course.getCourseName()});
-                        return true;
-                    }
-                });
-                v.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(MainActivity.this, MessageCourseActivity.class);
-                        intent.putExtra("course", course);
-                        startActivity(intent);
-                    }
-                });
+                mToast.setText("星期几输错,或课程节次输错，请重新输入");
+                mToast.setDuration(Toast.LENGTH_SHORT);
             }
+            mToast.show();
+        } else {
+            switch (getDay) {
+                case 1:
+                    day = (RelativeLayout) findViewById(R.id.monday);
+                    break;
+                case 2:
+                    day = (RelativeLayout) findViewById(R.id.tuesday);
+                    break;
+                case 3:
+                    day = (RelativeLayout) findViewById(R.id.wednesday);
+                    break;
+                case 4:
+                    day = (RelativeLayout) findViewById(R.id.thursday);
+                    break;
+                case 5:
+                    day = (RelativeLayout) findViewById(R.id.friday);
+                    break;
+                case 6:
+                    day = (RelativeLayout) findViewById(R.id.saturday);
+                    break;
+                case 7:
+                    day = (RelativeLayout) findViewById(R.id.weekday);
+                    break;
+            }
+            final View v = LayoutInflater.from(this).inflate(R.layout.course_card, null); //加载单个课程布局
+            v.setY(height * (course.getStart() - 1)); //设置开始高度,即第几节课开始
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams
+                    (ViewGroup.LayoutParams.MATCH_PARENT, (course.getEnd() - course.getStart() + 1) * height - 8); //设置布局高度,即跨多少节课
+            v.setLayoutParams(params);
+            TextView text = (TextView) v.findViewById(R.id.text_view);
+            text.setBackgroundResource(course_bj[(int) (Math.random() * 10)]);
+            text.setText(course.getCourseName() + "\n\n" + course.getClassRoom()); //显示课程名
+            day.addView(v);
+            //长按删除课程
+            v.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    v.setVisibility(View.GONE);//先隐藏
+                    day.removeView(v);//再移除课程视图
+                    SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
+                    sqLiteDatabase.execSQL("delete from courses where course_name = ?", new String[]{course.getCourseName()});
+                    return true;
+                }
+            });
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, MessageCourseActivity.class);
+                    intent.putExtra("course", course);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     public void createLoginView(){
@@ -325,22 +320,22 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-        @SuppressLint("SimpleDateFormat")
-        private void initDate() {
-            Date currentTime = new Date();
-            String[] weekDays = {"日", "一", "二", "三", "四", "五", "六"};
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(currentTime);
-            int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
-            if (w < 0)  w = 0;
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日  ");
-            String dateString = formatter.format(currentTime);
-            dateTextView.setText(dateString + "星期" + weekDays[w]);
-        }
-     public void change_image(View v){
-         initView();
-         showTypeDialog();
-      }
+    @SuppressLint("SimpleDateFormat")
+    private void initDate() {
+        Date currentTime = new Date();
+        String[] weekDays = {"日", "一", "二", "三", "四", "五", "六"};
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentTime);
+        int w = cal.get(Calendar.DAY_OF_WEEK) - 1;
+        if (w < 0)  w = 0;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日  ");
+        String dateString = formatter.format(currentTime);
+        dateTextView.setText(dateString + "星期" + weekDays[w]);
+    }
+    public void change_image(View v){
+        initView();
+        showTypeDialog();
+    }
 
     private void initView() {
         Bitmap bt = Login.getLocalBitmap(path+"profile.jpg");

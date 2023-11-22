@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<androidx.drawerlayout.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/draw"
@@ -20,13 +20,13 @@
         android:layout_height="match_parent">
 
         <!--Toolbar-->
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             app:titleTextColor="#fff"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/colorPrimary">
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -176,7 +176,7 @@
         </LinearLayout>
     </FrameLayout>
 </ScrollView>
-        <android.support.design.widget.NavigationView
+        <com.google.android.material.navigation.NavigationView
                 android:id="@+id/nav_view"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -184,4 +184,4 @@
                 app:menu="@menu/menu"
                 app:headerLayout="@layout/header"
                 />
-</android.support.v4.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

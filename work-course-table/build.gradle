@@ -30,14 +30,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'com.google.android.material:material:1.2.0-alpha03'
-    implementation 'com.android.support:appcompat-v7:24.2.1'
-    implementation 'com.android.support:design:24.2.1'
-    implementation 'de.hdodenhof:circleimageview:2.1.0'
-    androidTestImplementation 'junit:junit:4.12'
     implementation files('libs/jsoup-1.11.3.jar')
-    implementation 'com.google.android.gms:play-services-appindexing:8.4.0'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.google.firebase:firebase-appindexing:20.0.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

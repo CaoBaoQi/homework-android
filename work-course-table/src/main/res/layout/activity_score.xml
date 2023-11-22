@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <!--Toolbar-->
-            <android.support.v7.widget.Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
@@ -42,7 +42,7 @@
                     android:layout_marginLeft="25dp"
                     android:textSize="23dp"
                     android:text="成绩"/>
-                </android.support.v7.widget.Toolbar>
+                </androidx.appcompat.widget.Toolbar>
             <!--分隔线-->
             <View
                 android:layout_width="match_parent"
