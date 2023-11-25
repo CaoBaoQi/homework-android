@@ -7,6 +7,7 @@
     <!-- 自定义顶部工具条 -->
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
+
             android:layout_height="?attr/actionBarSize"
             android:background="@color/light_grey">
         <!-- 笔记标签 -->
@@ -38,14 +39,7 @@
                 android:layout_marginStart="62dp"
                 android:textSize="20sp"
                 android:textColor="@color/dark_grey" />
-        <!-- 回收站按钮 -->
-        <ImageView
-                android:id="@+id/recycle_bin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_baseline_delete_outline_24"
-                android:layout_gravity="end"
-                android:layout_marginEnd="25dp" />
+
     </androidx.appcompat.widget.Toolbar>
 
     <!-- ViewPager2 用于盛放 Fragment -->

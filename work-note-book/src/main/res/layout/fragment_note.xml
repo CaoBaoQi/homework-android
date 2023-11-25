@@ -40,4 +40,16 @@
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
             android:layout_marginBottom="30dp" />
+    <!-- 删除笔记按钮 -->
+    <ImageView
+            android:id="@+id/delete_node"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/delete"
+            android:scaleType="centerCrop"
+            android:background="@drawable/delete_button"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="100dp" />
 </RelativeLayout>

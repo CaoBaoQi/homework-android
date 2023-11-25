@@ -18,8 +18,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import java.util.List;
 
+import jz.cbq.work_note_book.MainActivity;
 import jz.cbq.work_note_book.R;
 import jz.cbq.work_note_book.activity.EditActivity;
+import jz.cbq.work_note_book.activity.RecycleBinActivity;
 import jz.cbq.work_note_book.adapter.NoteRecyclerViewAdapter;
 import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.Note;
@@ -56,6 +58,10 @@ public class NoteFragment extends Fragment {
      * 添加按钮
      */
     public ImageView add_note;
+    /**
+     * 删除按钮
+     */
+    public ImageView delete_note;
 
 
     /**
@@ -122,6 +128,10 @@ public class NoteFragment extends Fragment {
 
         add_note = rootView.findViewById(R.id.add_note);
         add_note.setOnClickListener(view -> startActivity(new Intent(getActivity(), EditActivity.class)));
+
+        delete_note = rootView.findViewById(R.id.delete_node);
+        delete_note.setOnClickListener(view -> startActivity(new Intent(getActivity(), RecycleBinActivity.class)));
+
     }
 
     /**

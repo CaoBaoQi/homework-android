@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,13 +32,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     ViewPager2 viewPager;
     /**
-     * 顶部笔记标签
+     * 顶部 笔记 标签
      */
     TextView note;
     /**
-     * 顶部待办标签
+     * 顶部 待办 标签
      */
     TextView in_abeyance;
+    /**
+     * 顶部 关于我 标签
+     */
+    TextView about_me;
     /**
      * 回收站按钮
      */
@@ -65,9 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         note.setOnClickListener(this);
         in_abeyance = findViewById(R.id.in_abeyance);
         in_abeyance.setOnClickListener(this);
-        recycle_bin = findViewById(R.id.recycle_bin);
-
-        recycle_bin.setOnClickListener(view -> startActivity(new Intent(MainActivity.this, RecycleBinActivity.class)));
+        about_me = findViewById(R.id.about_me);
 
         initViewPager();
     }
@@ -121,16 +124,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void changeFragment(int position) {
         if (position == R.id.note) {
             viewPager.setCurrentItem(0);
-        } else if (position == 0) {
-            note.setTextColor(note.getResources().getColor(R.color.black));
-            in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.dark_grey));
-            recycle_bin.setVisibility(View.VISIBLE);
         } else if (position == R.id.in_abeyance) {
             viewPager.setCurrentItem(1);
-        } else if (position == 1) {
-            note.setTextColor(note.getResources().getColor(R.color.dark_grey));
-            in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.black));
-            recycle_bin.setVisibility(View.INVISIBLE);
+        } else if (position == R.id.about_me) {
+            viewPager.setCurrentItem(2);
+        } else {
+            selected(position);
+        }
+    }
+
+    /**
+     * 选中标签
+     * @param position position
+     */
+    private void selected(int position) {
+        switch (position) {
+            case 0:
+                note.setTextColor(note.getResources().getColor(R.color.black));
+                in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.dark_grey));
+                about_me.setTextColor(about_me.getResources().getColor(R.color.dark_grey));
+                break;
+            case 1:
+                in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.black));
+                note.setTextColor(note.getResources().getColor(R.color.dark_grey));
+                about_me.setTextColor(about_me.getResources().getColor(R.color.dark_grey));
+                break;
+            case 2:
+                about_me.setTextColor(about_me.getResources().getColor(R.color.black));
+                note.setTextColor(note.getResources().getColor(R.color.dark_grey));
+                in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.dark_grey));
+                break;
+            default:
+                Log.d("MainActivity", "selected: " + position);
+                break;
         }
     }
 
