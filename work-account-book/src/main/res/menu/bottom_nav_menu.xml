@@ -16,6 +16,4 @@
         android:icon="@drawable/ic_chart"
         android:title="@string/title_notifications" />
 
-
-
 </menu>
