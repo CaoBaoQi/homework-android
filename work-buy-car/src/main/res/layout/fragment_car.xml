@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".fragment.CarFragment">
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="30dp"
+              android:background="@color/primary_color"/>
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:title="@string/car"
+            android:background="@color/primary_color"/>
+
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_above="@id/car_fragment_bottom"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/car_fragment_recyclerView"
+                    android:layout_width="match_parent"
+                    tools:listitem="@layout/car_list_item"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:layout_height="wrap_content"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/car_fragment_bottom"
+                android:gravity="right"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:gravity="center_vertical"
+                    android:layout_margin="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:id="@+id/car_fragment_tx_total"
+                        android:text="@string/total"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_height="wrap_content">
+                        <ImageView
+                                android:layout_marginBottom="4dp"
+                                android:src="@drawable/money"
+                                android:layout_gravity="bottom"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" tools:ignore="ContentDescription"/>
+                        <TextView
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/primary_color"
+                                android:text="@string/money"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <Button
+                            android:id="@+id/car_fragment_btn_buy"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/checkout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </RelativeLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+

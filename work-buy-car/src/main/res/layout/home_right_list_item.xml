@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:ignore="ContentDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView android:layout_width="80dp" android:layout_height="80dp"
+                                           android:layout_marginLeft="10dp"
+                                           app:cardCornerRadius="20dp">
+            <ImageView
+                    android:background="@drawable/rounded_image"
+                    android:id="@+id/right_list_item_iv_img"
+                    android:src="@drawable/p_0_1"
+                    android:scaleType="centerCrop"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"/>
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/right_list_item_tx_title"
+                    android:layout_width="wrap_content"
+                    android:text="@string/title"
+                    android:singleLine="true"
+                    android:textColor="#333"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/right_list_item_tx_description"
+                    android:layout_marginTop="3dp"
+                    android:layout_width="wrap_content"
+                    android:text="@string/description"
+                    android:textSize="12sp"
+                    android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:src="@drawable/money"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="4dp" />
+
+                <TextView
+                        android:id="@+id/right_list_item_tx_price"
+                        android:layout_width="wrap_content"
+                        android:textSize="20sp"
+                        android:text="100"
+                        android:textStyle="bold"
+                        android:textColor="@color/primary_color"
+                        android:layout_height="wrap_content" tools:ignore="HardcodedText"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
