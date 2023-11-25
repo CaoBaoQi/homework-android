@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/CaoBaoQii/homework-android">
+  <a href="https://github.com/CaoBaoQi/homework-android">
     <img src="https://jz-cbq-1311841992.cos.ap-beijing.myqcloud.com/images/FengLin.svg" alt="Logo" width="80"
       height="80">
   </a>
@@ -33,7 +33,7 @@
 # Git
 
 ```shell
-git clone https://github.com/CaoBaoQii/homework-android.git
+git clone https://github.com/CaoBaoQi/homework-android.git
 ```
 # LICENSE
 
