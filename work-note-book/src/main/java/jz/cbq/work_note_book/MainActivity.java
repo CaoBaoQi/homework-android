@@ -18,6 +18,7 @@ import java.util.List;
 
 import jz.cbq.work_note_book.activity.RecycleBinActivity;
 import jz.cbq.work_note_book.adapter.MyFragmentPagerAdapter;
+import jz.cbq.work_note_book.fragment.AboutMeFragment;
 import jz.cbq.work_note_book.fragment.InAbeyanceFragment;
 import jz.cbq.work_note_book.fragment.NoteFragment;
 
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(NoteFragment.newInstance());
         fragmentList.add(InAbeyanceFragment.newInstance());
+        fragmentList.add(AboutMeFragment.newInstance());
 
         MyFragmentPagerAdapter myFragmentPagerAdapter =
                 new MyFragmentPagerAdapter(getSupportFragmentManager(),
@@ -119,20 +121,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void changeFragment(int position) {
         if (position == R.id.note) {
             viewPager.setCurrentItem(0);
-
-            note.setTextColor(note.getResources().getColor(R.color.black));
-            in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.dark_grey));
-            recycle_bin.setVisibility(View.VISIBLE);
         } else if (position == 0) {
             note.setTextColor(note.getResources().getColor(R.color.black));
             in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.dark_grey));
             recycle_bin.setVisibility(View.VISIBLE);
         } else if (position == R.id.in_abeyance) {
             viewPager.setCurrentItem(1);
-
-            note.setTextColor(note.getResources().getColor(R.color.dark_grey));
-            in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.black));
-            recycle_bin.setVisibility(View.INVISIBLE);
         } else if (position == 1) {
             note.setTextColor(note.getResources().getColor(R.color.dark_grey));
             in_abeyance.setTextColor(in_abeyance.getResources().getColor(R.color.black));

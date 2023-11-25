@@ -28,6 +28,16 @@
                 android:layout_marginStart="62dp"
                 android:textSize="20sp"
                 android:textColor="@color/dark_grey" />
+        <!-- 关于我 -->
+        <TextView
+                android:id="@+id/about_me"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_me"
+                android:layout_gravity="center"
+                android:layout_marginStart="62dp"
+                android:textSize="20sp"
+                android:textColor="@color/dark_grey" />
         <!-- 回收站按钮 -->
         <ImageView
                 android:id="@+id/recycle_bin"

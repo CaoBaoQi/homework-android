@@ -59,7 +59,6 @@ public class NoteFragment extends Fragment {
 
 
     /**
-     * 通过这个方法可以在外部获取NoteFragment类的实例
      * @return NoteFragment
      */
     public static NoteFragment newInstance() {

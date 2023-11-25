@@ -57,7 +57,6 @@ public class InAbeyanceFragment extends Fragment {
 
 
     /**
-     * 通过这个方法在外界获取 InAbeyanceFragment 实例
      * @return InAbeyanceFragment fragment
      */
     public static InAbeyanceFragment newInstance() {
