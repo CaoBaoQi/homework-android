@@ -18,6 +18,7 @@ import java.util.List;
 import jz.cbq.work_note_book.R;
 import jz.cbq.work_note_book.activity.InAbeyanceDialogActivity;
 import jz.cbq.work_note_book.adapter.InAbeyanceRecyclerViewAdapter;
+import jz.cbq.work_note_book.db.op.InAbeyanceDBOperator;
 import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.InAbeyance;
 
@@ -149,7 +150,7 @@ public class InAbeyanceFragment extends Fragment {
      * @return List<InAbeyance>
      */
     public List<InAbeyance> getInAbeyancesData() {
-        return NoteBookDBOperator.getInAbeyanceData(getActivity());
+        return InAbeyanceDBOperator.getInAbeyanceData(getActivity());
     }
 
     /**
@@ -158,6 +159,6 @@ public class InAbeyanceFragment extends Fragment {
      * @return List<InAbeyance>
      */
     public List<InAbeyance> queryInAbeyancesData(String keyWord) {
-        return NoteBookDBOperator.queryInAbeyanceData(getActivity(), keyWord);
+        return InAbeyanceDBOperator.queryInAbeyanceData(getActivity(), keyWord);
     }
 }
