@@ -7,6 +7,8 @@
     <string name="note_title_edit">标题</string>
     <string name="note_content_edit">内容</string>
     <string name="about_me">关于</string>
+    <string name="cbq">曹宝琪-2309312102</string>
+    <string name="about_cbq">计算机科学与技术-专升本-2301 班</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

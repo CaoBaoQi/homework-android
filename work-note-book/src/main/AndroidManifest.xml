@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
             android:allowBackup="true"
             android:icon="@drawable/note"
@@ -10,9 +11,11 @@
             android:supportsRtl="true"
             android:theme="@style/Base.Theme.Homeworkandroid">
         <activity
-                android:name=".activity.RecycleBinActivity"
+                android:name=".MainActivity"
                 android:exported="false" />
-        <!-- 静态注册广播接收器 -->
+        <activity
+                android:name=".activity.RecycleBinActivity"
+                android:exported="false" /> <!-- 静态注册广播接收器 -->
         <receiver
                 android:name=".utils.AlarmReceiver"
                 android:enabled="true"
@@ -27,9 +30,10 @@
                 android:theme="@style/Base.Theme.Homeworkandroid.addWindow" /> <!-- 笔记的编辑界面 -->
         <activity
                 android:name=".activity.EditActivity"
-                android:exported="false" /> <!-- 主 Activity -->
+                android:exported="false" />
         <activity
-                android:name="MainActivity"
+                android:name=".activity.SplashActivity"
+                android:theme="@style/Theme.Full"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

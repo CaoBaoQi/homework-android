@@ -53,7 +53,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                     .build();
             notificationManager.notify(3, notification);
         } else {
-            Toast.makeText(context, "内部错误" + " |AlarmReceiver(onReceive)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "内部错误" + " | AlarmReceiver(onReceive)", Toast.LENGTH_SHORT).show();
         }
     }
 }

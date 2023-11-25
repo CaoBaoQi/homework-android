@@ -16,6 +16,12 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="Theme.Full" parent="Theme.MaterialComponents.DayNight.Bridge">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
 
     <style name="Base.Theme.Homeworkandroid.addWindow" parent="Base.Theme.Homeworkandroid">
         <!-- 设置悬浮 -->
