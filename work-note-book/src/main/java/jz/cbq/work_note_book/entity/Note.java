@@ -1,7 +1,7 @@
 package jz.cbq.work_note_book.entity;
 
 /**
- * 笔记实体类
+ * 笔记
  *
  * @author cbq
  * @date 2023/11/20 22:29

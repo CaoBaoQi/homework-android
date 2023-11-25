@@ -19,7 +19,7 @@ import jz.cbq.work_note_book.entity.InAbeyance;
 import jz.cbq.work_note_book.utils.AlarmUtil;
 
 /**
- * InAbeyanceRecyclerViewAdapter
+ * 待办事项 Adapter
  *
  * @author cbq
  * @date 2023/11/20 22:48

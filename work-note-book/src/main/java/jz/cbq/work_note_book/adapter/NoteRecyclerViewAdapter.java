@@ -42,7 +42,6 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
         this.context = context;
     }
 
-    // 创建 ViewHolder
     @NonNull
     @Override
     public MyRecyclerViewHolder onCreateViewHolder(
@@ -112,9 +111,7 @@ public class NoteRecyclerViewAdapter extends RecyclerView.Adapter<NoteRecyclerVi
     }
 
     /**
-     * 这是继承自 RecyclerView.ViewHolder 的
-     * 自定义的 MyRecyclerViewHolder
-     * 也是
+     * ViewHolder
      */
     public static class MyRecyclerViewHolder extends RecyclerView.ViewHolder {
         /**

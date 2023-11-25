@@ -12,7 +12,7 @@ import jz.cbq.work_note_book.entity.Note;
 import jz.cbq.work_note_book.utils.DateUtil;
 
 /**
- * 笔记 DB TODO 分离两个 OP
+ * 笔记 OP
  *
  * @author cbq
  * @date 2023/11/20 22:41

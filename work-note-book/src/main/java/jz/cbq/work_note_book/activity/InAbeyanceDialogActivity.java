@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bigkoo.pickerview.TimePickerView;
+
 import java.util.Calendar;
 
 import jz.cbq.work_note_book.MainActivity;
@@ -85,7 +87,7 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
                         setting_status.setSelected(true);
                         date_remind.setText(time);
                     })
-                    .setType(new boolean[]{true,true,true,true,true,false})
+                    .setType(new boolean[]{true, true, true, true, true, false})
                     .setCancelText("取消")
                     .setCancelColor(getResources().getColor(R.color.yellow))
                     .setSubmitText("确定")
@@ -113,7 +115,7 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
                 String date_created_str = DateUtil.getCurrentTime();
                 inAbeyance = new InAbeyance(content_str, date_remind_str, date_created_str);
                 int _id = addInAbeyance(inAbeyance);
-                if (!"".equals(date_remind_str)){
+                if (!"".equals(date_remind_str)) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                         AlarmUtil.setAlarm(getApplicationContext(),
                                 DateUtil.getTimeMillis(date_remind_str),
@@ -146,9 +148,11 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 EditText editText = InAbeyanceDialogActivity.this.content;
@@ -177,15 +181,17 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
 
     /**
      * 添加一条待办
+     *
      * @param inAbeyance InAbeyance
      * @return _id
      */
-    public int addInAbeyance(InAbeyance inAbeyance){
+    public int addInAbeyance(InAbeyance inAbeyance) {
         return NoteBookDBOperator.add_in_abeyance(getApplicationContext(), inAbeyance);
     }
 
     /**
      * 更新一条待办
+     *
      * @param inAbeyance InAbeyance
      */
     public void updateInAbeyance(InAbeyance inAbeyance) {

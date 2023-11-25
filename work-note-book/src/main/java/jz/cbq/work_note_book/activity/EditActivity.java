@@ -1,6 +1,7 @@
 package jz.cbq.work_note_book.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -52,7 +53,6 @@ public class EditActivity extends AppCompatActivity {
      */
     ImageView accomplishButton;
 
-    // 初始化方法
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +67,7 @@ public class EditActivity extends AppCompatActivity {
         note_id = findViewById(R.id.note_id);
         title = findViewById(R.id.note_title_edit);
         content = findViewById(R.id.note_content_edit);
-        backButton  = findViewById(R.id.back);
+        backButton = findViewById(R.id.back);
         accomplishButton = findViewById(R.id.accomplish);
 
         backButton.setOnClickListener(view -> {
@@ -84,9 +84,9 @@ public class EditActivity extends AppCompatActivity {
             if ("".equals(s_id) && (!"".equals(title) || !"".equals(content))) {
                 note = new Note(title, content);
                 addNote(note);
-            } else if (!"".equals(s_id) && (!"".equals(title) || !"".equals(content))){
+            } else if (!"".equals(s_id) && (!"".equals(title) || !"".equals(content))) {
                 int _id = Integer.parseInt(s_id);
-                note = new Note(_id,title, content);
+                note = new Note(_id, title, content);
                 updateNote(note);
             }
 
@@ -107,7 +107,8 @@ public class EditActivity extends AppCompatActivity {
     }
 
     /**
-     *  添加一条笔记
+     * 添加一条笔记
+     *
      * @param note Note
      */
     public void addNote(Note note) {
@@ -117,6 +118,7 @@ public class EditActivity extends AppCompatActivity {
 
     /**
      * 更新一条笔记
+     *
      * @param note Note
      */
     public void updateNote(Note note) {

@@ -24,12 +24,6 @@ import jz.cbq.work_note_book.R;
  */
 public class AlarmReceiver extends BroadcastReceiver {
 
-    /**
-     * onReceive
-     *
-     * @param context The Context in which the receiver is running.
-     * @param intent  The Intent being received.
-     */
     @RequiresApi(api = Build.VERSION_CODES.S)
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -44,7 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         NotificationChannel notificationChannel = new NotificationChannel(
                 "TODOAlarm", "待办提醒",
-                NotificationManager.IMPORTANCE_HIGH); // 弹出并在通知栏显示
+                NotificationManager.IMPORTANCE_HIGH);
 
         notificationManager.createNotificationChannel(notificationChannel);
 

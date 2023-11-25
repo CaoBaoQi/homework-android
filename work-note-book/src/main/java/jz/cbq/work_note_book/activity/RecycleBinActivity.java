@@ -3,6 +3,7 @@ package jz.cbq.work_note_book.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import java.util.List;
 
 import jz.cbq.work_note_book.R;
@@ -20,7 +22,7 @@ import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.Note;
 
 /**
- * RecycleBinActivity
+ * 回收站 RecycleBinActivity
  *
  * @author cbq
  * @date 2023/11/20 22:55
@@ -44,7 +46,6 @@ public class RecycleBinActivity extends AppCompatActivity {
      */
     RecyclerView recyclerView;
 
-    // 初始化
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +65,11 @@ public class RecycleBinActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 String keyWord = RecycleBinActivity.this
@@ -91,6 +94,7 @@ public class RecycleBinActivity extends AppCompatActivity {
 
     /**
      * 查询全部已被回收的数据
+     *
      * @return List<Note>
      */
     public List<Note> getAllNotes() {
@@ -99,6 +103,7 @@ public class RecycleBinActivity extends AppCompatActivity {
 
     /**
      * 按照关键字查询已被回收的笔记
+     *
      * @param keyWord 关键字
      * @return List<Note>
      */

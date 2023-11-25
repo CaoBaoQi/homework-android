@@ -1,7 +1,7 @@
 package jz.cbq.work_note_book.entity;
 
 /**
- * 待办实体类
+ * 待办事项
  *
  * @author cbq
  * @date 2023/11/20 22:33
