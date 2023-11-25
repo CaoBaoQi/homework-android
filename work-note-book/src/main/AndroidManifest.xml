@@ -11,6 +11,16 @@
             android:supportsRtl="true"
             android:theme="@style/Base.Theme.Homeworkandroid">
         <activity
+                android:name=".activity.RegisterActivity"
+                android:exported="false"
+                android:label="@string/title_activity_register"
+                android:theme="@style/Base.Theme.Homeworkandroid" />
+        <activity
+                android:name=".activity.LoginActivity"
+                android:exported="false"
+                android:label="@string/title_activity_login"
+                android:theme="@style/Base.Theme.Homeworkandroid" />
+        <activity
                 android:name=".MainActivity"
                 android:exported="false" />
         <activity
@@ -33,8 +43,8 @@
                 android:exported="false" />
         <activity
                 android:name=".activity.SplashActivity"
-                android:theme="@style/Theme.Full"
-                android:exported="true">
+                android:exported="true"
+                android:theme="@style/Theme.Full">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

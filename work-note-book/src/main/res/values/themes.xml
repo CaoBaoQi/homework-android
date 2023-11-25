@@ -40,4 +40,9 @@
         <!-- 触摸外界关闭窗口 -->
         <item name="android:windowCloseOnTouchOutside">true</item>
     </style>
+    <!-- Base application theme. -->
+    <style name="Base.Base.Theme.Homeworkandroid" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
 </resources>

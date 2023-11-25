@@ -38,6 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         noteTable(sqLiteDatabase);
         inAbeyanceTable(sqLiteDatabase);
+        accountTable(sqLiteDatabase);
     }
 
     @Override
@@ -58,8 +59,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 "date_updated text," +
                 "recycle_status integer DEFAULT 0)";
 
-        sqLiteDatabase.execSQL(sql);
-
         String insert_default_note = "INSERT INTO note " +
                 "(title, content, date_created, date_updated)" +
                 "VALUES" +
@@ -71,6 +70,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 "6.江天一色 ~ \n" +
                 "7.email: 1203952894@qq.com \"," +
                 "\"11月20日 上午 11:11\",\"11月20日 上午 11:11\")";
+
+        sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.execSQL(insert_default_note);
     }
 
@@ -87,6 +88,26 @@ public class DBHelper extends SQLiteOpenHelper {
                 "date_created text)";
 
         sqLiteDatabase.execSQL(sql);
+    }
+
+    /**
+     * 创建 账户 表
+     * @param sqLiteDatabase sqLiteDatabase
+     */
+    private static void accountTable(SQLiteDatabase sqLiteDatabase) {
+        String sql = "CREATE TABLE account (" +
+                "_id integer PRIMARY KEY AUTOINCREMENT," +
+                "username text," +
+                "email text," +
+                "password text)";
+
+        String insert_default_account = "INSERT INTO account " +
+                "(username, email, password)" +
+                "VALUES" +
+                "('CaoBaoQi', '1203952894@qq.com','123321')";
+
+        sqLiteDatabase.execSQL(sql);
+        sqLiteDatabase.execSQL(insert_default_account);
     }
 
 }

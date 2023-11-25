@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
 
         tv_second = findViewById(R.id.tv_second);
         tv_second.setOnClickListener(v -> {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
 
@@ -51,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
 

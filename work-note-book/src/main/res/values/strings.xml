@@ -11,4 +11,23 @@
     <string name="about_cbq">计算机科学与技术-专升本-2301 班</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="input_pwd">请输入密码</string>
+    <string name="default_pwd">123321</string>
+    <string name="input_name">请输入账号</string>
+    <string name="default_name">CaoBaoQi</string>
+    <string name="not_register">还没有账号？</string>
+    <string name="save_pwd">记住我</string>
+    <string name="login">登录</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="register">注册</string>
+    <string name="input_pwd_twice">再次确认密码</string>
+    <string name="input_email">邮箱</string>
+    <string name="channel_description">这是公共通知</string>
+    <string name="channel_name">公共通知</string>
 </resources>
