@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import jz.cbq.work_note_book.R;
+import jz.cbq.work_note_book.db.op.InAbeyanceDBOperator;
 import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.InAbeyance;
 import jz.cbq.work_note_book.utils.AlarmUtil;
@@ -148,7 +149,7 @@ public class InAbeyanceRecyclerViewAdapter extends RecyclerView.Adapter<InAbeyan
                 setStatus(1 - inAbeyances.get(position).getStatus());
 
         notifyItemChanged(position);
-        NoteBookDBOperator.changeInAbeyanceStatus(context, _id);
+        InAbeyanceDBOperator.changeInAbeyanceStatus(context, _id);
     }
 
     /**
@@ -163,7 +164,7 @@ public class InAbeyanceRecyclerViewAdapter extends RecyclerView.Adapter<InAbeyan
             AlarmUtil.cancelAlarm(context.getApplicationContext(), _id);
         }
 
-        NoteBookDBOperator.deleteInAbeyance(context, _id);
+        InAbeyanceDBOperator.deleteInAbeyance(context, _id);
         inAbeyances.remove(position);
         notifyItemRemoved(position);
 

@@ -17,7 +17,7 @@ import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.Note;
 
 /**
- * NoteRecyclerViewAdapter
+ * 笔记 Adapter
  *
  * @author cbq
  * @date 2023/11/20 22:50

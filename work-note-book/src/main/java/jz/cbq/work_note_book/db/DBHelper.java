@@ -36,19 +36,33 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String create_table_note = "create table note(" +
-                "_id integer primary key autoincrement," +
+        noteTable(sqLiteDatabase);
+        inAbeyanceTable(sqLiteDatabase);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    }
+
+
+    /**
+     * 创建 note 表并插入一条默认数据
+     * @param sqLiteDatabase sqLiteDatabase
+     */
+    private static void noteTable(SQLiteDatabase sqLiteDatabase) {
+        String sql = "CREATE TABLE note(" +
+                "_id integer PRIMARY KEY AUTOINCREMENT," +
                 "title text," +
                 "content text," +
                 "date_created text," +
                 "date_updated text," +
-                "recycle_status integer default 0)";
+                "recycle_status integer DEFAULT 0)";
 
-        sqLiteDatabase.execSQL(create_table_note);
+        sqLiteDatabase.execSQL(sql);
 
-        String insert_default_note = "insert into note " +
+        String insert_default_note = "INSERT INTO note " +
                 "(title, content, date_created, date_updated)" +
-                "values" +
+                "VALUES" +
                 "(\"About\", \"1.学校: 晋中学院 \n" +
                 "2.专业: 计算机科学与技术 \n" +
                 "3.班级: 计算机专升本 2301 班 \n" +
@@ -58,21 +72,22 @@ public class DBHelper extends SQLiteOpenHelper {
                 "7.email: 1203952894@qq.com \"," +
                 "\"11月20日 上午 11:11\",\"11月20日 上午 11:11\")";
         sqLiteDatabase.execSQL(insert_default_note);
+    }
 
-        // table - in_abeyance
-
-        String create_table_in_abeyance = "create table in_abeyance (" +
-                "_id integer primary key autoincrement," +
+    /**
+     * 创建 in_abeyance 表
+     * @param sqLiteDatabase sqLiteDatabase
+     */
+    private static void inAbeyanceTable(SQLiteDatabase sqLiteDatabase) {
+        String sql = "CREATE TABLE in_abeyance (" +
+                "_id integer PRIMARY KEY AUTOINCREMENT," +
                 "content text," +
                 "date_remind text," +
-                "status integer default 0," +
+                "status integer DEFAULT 0," +
                 "date_created text)";
 
-        sqLiteDatabase.execSQL(create_table_in_abeyance);
+        sqLiteDatabase.execSQL(sql);
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-    }
 }
 

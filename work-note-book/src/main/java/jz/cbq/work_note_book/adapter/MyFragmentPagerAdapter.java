@@ -9,7 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.List;
 
 /**
- * MyFragmentPagerAdapter
+ * 页面 Adapter
  *
  * @author cbq
  * @date 2023/11/20 22:49

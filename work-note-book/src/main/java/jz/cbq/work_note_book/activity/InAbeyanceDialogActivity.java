@@ -20,6 +20,7 @@ import java.util.Calendar;
 
 import jz.cbq.work_note_book.MainActivity;
 import jz.cbq.work_note_book.R;
+import jz.cbq.work_note_book.db.op.InAbeyanceDBOperator;
 import jz.cbq.work_note_book.db.op.NoteBookDBOperator;
 import jz.cbq.work_note_book.entity.InAbeyance;
 import jz.cbq.work_note_book.utils.AlarmUtil;
@@ -186,7 +187,7 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
      * @return _id
      */
     public int addInAbeyance(InAbeyance inAbeyance) {
-        return NoteBookDBOperator.add_in_abeyance(getApplicationContext(), inAbeyance);
+        return InAbeyanceDBOperator.add_in_abeyance(getApplicationContext(), inAbeyance);
     }
 
     /**
@@ -195,6 +196,6 @@ public class InAbeyanceDialogActivity extends AppCompatActivity {
      * @param inAbeyance InAbeyance
      */
     public void updateInAbeyance(InAbeyance inAbeyance) {
-        NoteBookDBOperator.updateInAbeyance(getApplicationContext(), inAbeyance);
+        InAbeyanceDBOperator.updateInAbeyance(getApplicationContext(), inAbeyance);
     }
 }
