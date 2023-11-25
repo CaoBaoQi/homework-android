@@ -7,8 +7,8 @@
 <h3 align="center">homework-android</h3>
 
 <p align="center">
-  homework-android
-  <br />
+安卓作业(大三-上) 包含一些常见 app (记事本、备忘录、购物车、课程表等)
+<br />
   <a href="https://github.com/CaoBaoQii/homework-android/tree/master/"><strong>项目文档</strong></a>
   <br />
   <br />
@@ -30,7 +30,7 @@
 git clone https://github.com/CaoBaoQii/homework-android.git
 ```
 
-Distributed under the  **Apache License 2.0** . See `LICENSE.txt` for more information.
+Distributed under the  **Apache License 2.0** . See [LICENSE](LICENSE) for more information.
 
 | 邮箱  | 1203952894@qq.com |
 |-----|-------------------|
