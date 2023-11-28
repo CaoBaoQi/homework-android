@@ -3,15 +3,15 @@ package jz.cbq.work_memo;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-class MyDBOpenHelper extends SQLiteOpenHelper {
 
+public class MyDBOpenHelper extends SQLiteOpenHelper {
 
+    private Calendar createDate,remindDate;
     public MyDBOpenHelper(Context context) {
         //创建一个名为DB_ToDoList的数据库
         super(context, "todoDatabase.db", null, 2);
@@ -31,6 +31,8 @@ class MyDBOpenHelper extends SQLiteOpenHelper {
                 "remindID integer, notificationID integer);";      //用于保存状态栏提示Notification的ID
         db.execSQL(sql);
         db.execSQL("insert into tb_Remind(notificationID) values(0);");
+
+
     }
 
     @Override

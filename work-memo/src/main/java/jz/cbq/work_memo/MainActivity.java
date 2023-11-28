@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbOpenHelper=new MyDBOpenHelper(this);
+
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
                     .add(R.id.fragment_container, new RemindList())
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container, new UndoList())
                     .commit();
             return true;
-        } else if (itemId == R.id.menu_done) { //列出未处理事项
+        } else if (itemId == R.id.menu_done) { //列出已经处理事项
             getFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, new DoneList())
                     .commit();
@@ -143,6 +144,10 @@ public class MainActivity extends AppCompatActivity {
         String aftertomorrow2=dateFormatter.format(new Date(remindDate.getTimeInMillis()+86400000*3));//大后天这个时候
 
         String sql_insert="insert into tb_ToDoItem(createDate,remindTitle,remindText,remindDate) " +
+                "values ('" + yesterday + "','宋文杰-2309312117','信息工程系-计算机专升本 2301 班','" + today + "');";
+        db.execSQL(sql_insert);
+
+        sql_insert="insert into tb_ToDoItem(createDate,remindTitle,remindText,remindDate) " +
                 "values ('"+yesterday+"','开会','评选优秀员工','"+today+"');";
         db.execSQL(sql_insert);
         StartNotification.startTimeService(new Long(60000),"下午2点开会","会议议题,评选优秀员工",this);
