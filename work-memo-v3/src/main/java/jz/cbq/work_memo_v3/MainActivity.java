@@ -97,18 +97,4 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-//    public void itemClicked(long id){
-//        View fr = findViewById(R.id.pager);
-//        if(fr != null){
-//            AllFragment al = new AllFragment();
-//
-//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//
-//            ft.replace(R.id.pager, al);
-//            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-//            ft.addToBackStack(null);
-//            ft.commit();
-//        }
-//    }
 }

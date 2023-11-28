@@ -6,6 +6,7 @@ public class Note {
     private String title;
     private String text;
     private String type;
+
     //static public final Note[] notes = {new Note("12333", "我的一天", "学习"),
      //       new Note("12333", "我的ssss一天", "学习"),
      //       new Note("12333", "我的ddd一天", "学习")};
